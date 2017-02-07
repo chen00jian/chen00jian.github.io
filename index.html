@@ -5,17 +5,24 @@
 <meta name="viewport" content="initial-scale=1, user-scalable=no">
 <title>无标题文档</title>
 <script>
-Notification.requestPermission(function(){
-	var n = new Notification("桌面通知",{
-		//icon:"https://assets-cdn.github.com/favicon.ico"
-		icon:"https://www.baidu.com/favicon.ico"	
-	});
-});
+window.onload = function(){
+	
+	var oBtn = document.getElementById("btn1");
+	oBtn.onclick = function(){
+		Notification.requestPermission(function(){
+			var n = new Notification("桌面通知",{
+				//icon:"https://assets-cdn.github.com/favicon.ico"
+				icon:"https://www.baidu.com/favicon.ico"	
+			});
+		});
+	};
+};
 
 </script>
 </head>
 
 <body>
+<input id="btn1" type="button" value="notification"/>
 11111111
 </body>
 </html>
