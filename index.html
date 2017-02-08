@@ -4,26 +4,60 @@
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1, user-scalable=no">
 <title>无标题文档</title>
+<style>
+/* make sure the element has position: relative */
+[data-notifications] { position: relative; }
+/* append the notification badge after it */
+[data-notifications]:after { /* the fries */
+position: absolute; right: -15px; top: -15px; background: red; border-radius: 50%; width: 20px; height: 20px; padding: 4px; color: #f2f2f2; text-align: center; /*content:"2"; */
+  /* the burger */
+content: attr(data-notifications); }
+</style>
 <script>
-window.onload = function(){
+/*  
+    Notification 可选参数options
+	body 通知的主体内容
+	icon 支持ico、png、jpg、jpeg格式 不支持svg
+	dir  布局(排版)方向,三个值：auto(默认)/ltr/rtl(FF下演示有效果)
+	lang 指定通知中所使用的语言en-US/zh-CN  —— 基本没用
+	tag  唯一标识 —— id  同一种类型的通知值显示一次即可
+*/
+Notification.requestPermission(function(status){
 	
-	var oBtn = document.getElementById("btn1");
-	oBtn.onclick = function(){
-		alert(1);
-		Notification.requestPermission(function(){
-			var n = new Notification("桌面通知",{
-				//icon:"https://assets-cdn.github.com/favicon.ico"
-				icon:"https://www.baidu.com/favicon.ico"	
-			});
+	if(status == "granted"){
+		var n = new Notification("通知标题!",{
+			body:"通知内容"+Math.random(),
+			icon:"https://www.baidu.com/favicon.ico",
+			//icon:"https://www.baidu.com/img/baidu.svg",//不支持
+			//icon:"images/loading.gif",//gif不会动
+			//icon:"images/pic.jpg",//icon
+			dir:"ltr",
+			lang:"zh-CN",
+			//lang:"en-US",
+			tag:"id"+Math.random(),
+			//vibrate: [200, 100, 200, 100, 200, 100, 200],
+			image:"images/pic.jpg",
+			badge:"https://www.baidu.com/",//通知内容过多无法显示时，提供的连接地址
+			silent:true,/*和vibrate属性不能共存*/
+			sound:"images/1.mp3",
+			//renotify:false,
 		});
-	};
-};
+	}
+	var oDate = new Date(n.timestamp);
+	console.log(n,oDate.toLocaleString());
+});
+
+
+
 
 </script>
 </head>
 
 <body>
 <input id="btn1" type="button" value="notification"/>
-11111111
+<ol>
+    <li><a data-notifications="10" class="button" href="#">New Comments on Your Posts</a> </li>
+    <li><a class="button" href="#">Number of Post Likes :)</a> </li>
+<ol>
 </body>
 </html>
