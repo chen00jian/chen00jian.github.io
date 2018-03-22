@@ -1,61 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1, user-scalable=no">
-<title>无标题文档</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>ECharts</title>
+    
+    <!-- 引入 echarts.js -->
+    <script src="flexible.js"></script>
+    <script src="echarts.min.js"></script>
 <style>
-/* make sure the element has position: relative */
-[data-notifications] { position: relative; }
-/* append the notification badge after it */
-[data-notifications]:after { /* the fries */
-position: absolute; right: -15px; top: -15px; background: red; border-radius: 50%; width: 20px; height: 20px; padding: 4px; color: #f2f2f2; text-align: center; /*content:"2"; */
-  /* the burger */
-content: attr(data-notifications); }
+<!--37.5px;-->
+html{
+	font-size:xxx;//	
+}
 </style>
-<script>
-/*  
-    Notification 可选参数options
-	body 通知的主体内容
-	icon 支持ico、png、jpg、jpeg格式 不支持svg
-	dir  布局(排版)方向,三个值：auto(默认)/ltr/rtl(FF下演示有效果)
-	lang 指定通知中所使用的语言en-US/zh-CN  —— 基本没用
-	tag  唯一标识 —— id  同一种类型的通知值显示一次即可
-*/
-Notification.requestPermission(function(status){
-	
-	if(status == "granted"){
-		var n = new Notification("通知标题!",{
-			body:"通知内容"+Math.random(),
-			icon:"https://www.baidu.com/favicon.ico",
-			//icon:"https://www.baidu.com/img/baidu.svg",//不支持
-			//icon:"images/loading.gif",//gif不会动
-			//icon:"images/pic.jpg",//icon
-			dir:"ltr",
-			lang:"zh-CN",
-			//lang:"en-US",
-			tag:"id"+Math.random(),
-			//vibrate: [200, 100, 200, 100, 200, 100, 200],
-			image:"images/pic.jpg",
-			badge:"https://www.baidu.com/",//通知内容过多无法显示时，提供的连接地址
-			silent:true,/*和vibrate属性不能共存*/
-			sound:"images/1.mp3",
-			//renotify:false,
-		});
-	}
-});
-
-
-
-
-</script>
 </head>
-
 <body>
-<input id="btn1" type="button" value="notification"/>
-<ol>
-    <li><a data-notifications="10" class="button" href="#">New Comments on Your Posts</a> </li>
-    <li><a class="button" href="#">Number of Post Likes :)</a> </li>
-<ol>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 </body>
 </html>
