@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Dependency directory
+node_modules/
+.svn/
+
+
+# Logs
+logs
+*.log
+npm-debug.log*

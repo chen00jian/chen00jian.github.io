@@ -1,49 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>ECharts</title>
-    
-    <!-- 引入 echarts.js -->
-    <script src="flexible.js"></script>
-    <script src="echarts.min.js"></script>
-<style>
-<!--37.5px;-->
-html{
-	font-size:xxx;//	
-}
-</style>
+<meta charset="utf-8">
+<!--允许全屏-->
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no,email=no" name="format-detection">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+-->
+<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+<title>test</title>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.2.0/css/swiper.css">
+<link rel="stylesheet" href="dest/css/index.css"/>
+
+<script src="https://cdn.bootcss.com/Swiper/4.2.0/js/swiper.js"></script>
+<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+
+
+
+<!-- 引入 echarts.js -->
+<!-- <script src="flexible.js"></script>-->
+<!--<script src="echarts.min.js"></script>-->
+<script>
+$(function(){
+var mySwiper = new Swiper ('.swiper-container', {
+	direction: 'horizontal',
+	loop: true,
+	pagination: {//分页器
+	  el: '.swiper-pagination',
+	},
+})        
+
+
+//define data 
+var pageData = {
+	sections: [
+		{
+			"brannerImag": "http://xxx.cdn.com/B1PNLZKXXXXXaTXXXXXXXXXXXX-750-481.jpg",
+			items:[
+				{
+					"itemLink": "##",
+					"imgSrc": "https://placeimg.com/350/350/people/grayscale",
+					"poductName": "Carter's1年式灰色长袖连体衣包脚爬服全棉鲸鱼男婴儿童装115G093",
+					"price": "299.06",
+					"preferential": "满400减100",
+					"activityType": "1小时内热卖5885件",
+					"shopLink": "##",
+					"activeName": "马上抢！"
+				}
+			]
+		}
+	]
+};
+});
+
+</script>
+<style></style>
 </head>
 <body>
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
 
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data:['销量']
-            },
-            xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
+<div class="page">
+    <div class="bannar swiper-container">
+    	<ul class="swiper-wrapper">
+        	<li class="swiper-slide"><img src="https://r.dididapiao.com/image/bill/JXK3-IOS-750x386.png" /></li>
+        	<li class="swiper-slide"><img src="https://r.dididapiao.com/image/bill/and-720x312-gd.jpg" /></li>
+        	<li class="swiper-slide"><img src="https://r.dididapiao.com/image/bill/tpjx-iOS.jpg" /></li>
+        	<li class="swiper-slide"><img src="https://r.dididapiao.com/image/bill/wapxinrenfu9i706750360.jpg" /></li>
+        </ul>
+        <div class="swiper-pagination"></div>
+     
+    </div>
+
+</div>
+<!--
+<div class="item-section" data-repeat="sections">
+  <div class="item-section_header">
+    <h2><img src="{brannerImag}" alt=""></h2>
+  </div>
+  <ul>
+    <li data-repeat="items" class="flag" role="link" href="{itemLink}"> <a class="figure flag-item" href="{itemLink}"> <img src="{imgSrc}" alt=""> </a>
+      <div class="figcaption flag-item">
+        <div class="flag-title"><a href="{itemLink}" title="">{poductName}</a></div>
+        <div class="flag-price"><span>双11价</span><strong>¥{price}</strong><small>({preferential})</small></div>
+        <div class="flag-type">{activityType}</div>
+        <a class="flag-btn" href="{shopLink}">{activeName}</a> </div>
+    </li>
+  </ul>
+</div>-->
 </body>
 </html>
